@@ -1,1 +1,72 @@
-<header>Hello</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protostar — Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="nav.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">
+      <svg width="42" height="42" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0" stop-color="#3EE7D6"/>
+            <stop offset="1" stop-color="#8A6CFF"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="12" fill="#0f1724"/>
+        <g transform="translate(8,8)" fill="none" stroke="url(#g1)" stroke-width="3" stroke-linecap="round">
+          <path d="M8 24 L24 8 L40 24" stroke-linejoin="round"/>
+          <path d="M24 8 L24 40" />
+          <circle cx="24" cy="24" r="6" fill="rgba(255,255,255,0.03)" stroke="url(#g1)"/>
+        </g>
+      </svg>
+      <span class="brand">Protostar</span>
+    </a>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Welcome to Protostar</h1>
+  <p>Leading innovation in solar technology. Our Solar Axis Unit produces 4.5–5× more power per square foot than standard panels.</p>
+  <section class="feature-cards">
+    <div class="card">
+      <h3>Solar Axis Unit</h3>
+      <p>Revolutionary solar panel design maximizing efficiency.</p>
+    </div>
+    <div class="card">
+      <h3>Engineering Excellence</h3>
+      <p>Precision and innovation combined for future-ready energy solutions.</p>
+    </div>
+    <div class="card">
+      <h3>Global Impact</h3>
+      <p>Providing high-output renewable energy for a sustainable future.</p>
+    </div>
+  </section>
+</main>
+
+<!-- Floating Navigation Orb -->
+<div id="navOrb"></div>
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h2>Navigate Protostar</h2>
+    <p>Select a page to visit:</p>
+    <a href="index.html">Home</a>
+    <a href="solar-axis-unit.html">Solar Axis Unit</a>
+    <a href="specs.html">Specs</a>
+    <a href="about.html">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="team.html">Team</a>
+    <button class="close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+</body>
+</html>
