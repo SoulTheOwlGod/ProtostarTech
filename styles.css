@@ -1,176 +1,144 @@
-/* ==========================
-   Protostar – Global Styles
-   ========================== */
-
+/* styles.css */
 :root {
-  --bg-main: #050b16;
-  --bg-panel: rgba(15, 25, 45, 0.95);
-  --accent: #00b4ff;
-  --text-main: #e6f1ff;
-  --text-muted: #9bb0cc;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  width: 100%;
-  min-height: 100%;
+  --bg: #0b0f17;
+  --card: #111622;
+  --accent: #4dbbff;
+  --accent2: #8a6cff;
+  --text: #e6ecf8;
+  --font: 'Inter', sans-serif;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #0b1628, var(--bg-main));
-  color: var(--text-main);
-  line-height: 1.6;
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
 }
 
 .container {
-  width: min(1100px, 92%);
-  margin-inline: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
 }
 
-/* ==========================
-   Header
-   ========================== */
-
 .site-header {
-  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
-  color: var(--text-main);
+  color: var(--text);
 }
 
-/* ==========================
-   Page Content
-   ========================== */
-
-main {
-  padding: clamp(2rem, 6vw, 4rem) 0;
+.brand {
+  font-weight: 700;
+  font-size: 1.4rem;
 }
 
-h1, h2, h3 {
-  font-weight: 500;
-  letter-spacing: 0.04em;
+h1, h2, h3 { margin: 0 0 0.5rem 0; }
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-h1 {
-  font-size: clamp(2rem, 6vw, 3rem);
-  margin-bottom: 1rem;
+.card {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-h2 {
-  font-size: clamp(1.4rem, 4vw, 2rem);
-  margin-bottom: 0.75rem;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(77,187,255,0.3);
 }
 
-p {
-  color: var(--text-muted);
-  max-width: 65ch;
-}
-
-section {
-  margin-bottom: clamp(3rem, 8vw, 5rem);
-}
-
-/* ==========================
-   Floating Navigation Orb
-   ========================== */
-
+/* Floating Orb */
 #navOrb {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  width: 56px;
-  height: 56px;
+  bottom: 28px;
+  right: 28px;
+  width: 64px;
+  height: 64px;
+  background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #1fd1ff, var(--accent));
-  box-shadow: 0 0 25px rgba(0, 180, 255, 0.6);
+  box-shadow: 0 0 18px rgba(77,187,255,0.6), 0 0 40px rgba(138,108,255,0.4);
   cursor: pointer;
-  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: pulse 2.5s infinite;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 #navOrb:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 40px rgba(0, 180, 255, 0.85);
+  transform: scale(1.15) rotate(8deg);
+  box-shadow: 0 0 28px rgba(77,187,255,0.8), 0 0 60px rgba(138,108,255,0.5);
 }
 
-/* ==========================
-   Modal Overlay
-   ========================== */
+@keyframes pulse {
+  0%,100% { transform: scale(1); box-shadow: 0 0 18px rgba(77,187,255,0.6),0 0 40px rgba(138,108,255,0.4); }
+  50% { transform: scale(1.08); box-shadow: 0 0 28px rgba(77,187,255,0.7),0 0 50px rgba(138,108,255,0.45); }
+}
 
+/* Modal */
 .modal-bg {
   position: fixed;
-  inset: 0;
-  background: rgba(5, 10, 20, 0.75);
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.65);
   backdrop-filter: blur(6px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
 }
-
-/* ==========================
-   Responsive Modal Container
-   ========================== */
-
 .modal {
-  width: min(90vw, 420px);
-  max-height: 85vh;
-  background: var(--bg-panel);
-  border-radius: 18px;
-  padding: clamp(1rem, 4vw, 2rem);
-  box-shadow: 0 0 40px rgba(0, 180, 255, 0.25);
-  overflow-y: auto;
-}
-
-/* ==========================
-   Modal Navigation
-   ========================== */
-
-.modal-nav {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.75rem, 2.5vw, 1.25rem);
-}
-
-.modal-nav a {
-  text-decoration: none;
-  color: var(--text-main);
-  font-size: clamp(1rem, 3.5vw, 1.2rem);
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 20px;
+  width: min(90%, 380px);
   text-align: center;
-  transition: background 0.25s ease, transform 0.2s ease;
-}
-
-.modal-nav a:hover {
-  background: rgba(0, 180, 255, 0.15);
-  transform: translateY(-1px);
-}
-
-/* ==========================
-   Utility / Future Sections
-   ========================== */
-
-.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
+  gap: 1rem;
+  animation: slideUp 0.35s ease forwards;
 }
-
-.card {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+@keyframes slideUp {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
 }
+.modal a {
+  padding:0.8rem;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  display:block;
+  color:var(--text);
+  background: var(--accent);
+  transition:0.2s;
+}
+.modal a:hover { background: var(--accent2); }
+.close-btn {
+  margin-top:1rem;
+  background:#222a39;
+  color:var(--text);
+  border:none;
+  padding:0.6rem 1.2rem;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.2s;
+}
+.close-btn:hover { opacity:0.8; }
